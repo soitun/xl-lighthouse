@@ -35,7 +35,7 @@ echo "Current Time: $(date)"
 
 scaleMemoryRate() {
     local mem="$1"
-    local ratio="${2:-80}"
+    local ratio="${2:-75}"
     mem=$(echo "$mem" | tr -d '[:space:]' | tr '[:lower:]' '[:upper:]')
     if [ -z "$mem" ]; then
         return 0
@@ -91,8 +91,8 @@ read_memory_config() {
         XMS=$default_xms
         echo "Memory from defaults: -Xmx$XMX -Xms$XMS"
     fi
-    XMX=$(scaleMemoryRate "$XMX" 80) || exit 1
-    XMS=$(scaleMemoryRate "$XMS" 80) || exit 1
+    XMX=$(scaleMemoryRate "$XMX" 75) || exit 1
+    XMS=$(scaleMemoryRate "$XMS" 75) || exit 1
     echo "Memory after scaling (80%): -Xmx$XMX -Xms$XMS"
 }
 
@@ -120,6 +120,7 @@ case "$SERVICE_TYPE" in
         echo "Starting Insights Service..."
         read_memory_config "insights" "256M" "256M"
         FINAL_JAVA_OPTS=$(build_base_java_opts)
+        FINAL_JAVA_OPTS="$FINAL_JAVA_OPTS -XX:+UseG1GC -XX:MaxMetaspaceSize=256M"
         LOG_CONFIG="${LOG_CONFIG:-log4j2-insights.xml}"
         SPRING_CONFIG="${SPRING_CONFIG:-lighthouse-insights.yml}"
         echo "Log Config: $LOG_CONFIG"
@@ -137,7 +138,7 @@ case "$SERVICE_TYPE" in
         echo "Starting Standalone Service..."
         read_memory_config "standalone" "500M" "500M"
         FINAL_JAVA_OPTS=$(build_base_java_opts)
-        FINAL_JAVA_OPTS="$FINAL_JAVA_OPTS -XX:+UseG1GC"
+        FINAL_JAVA_OPTS="$FINAL_JAVA_OPTS -XX:+UseG1GC -XX:MaxMetaspaceSize=256M"
         LOG_CONFIG="${LOG_CONFIG:-log4j2-standalone.xml}"
         MAIN_CLASS="${MAIN_CLASS:-com.dtstep.lighthouse.standalone.executive.LightStandaloneEntrance}"
         echo "Log Config: $LOG_CONFIG"
@@ -154,6 +155,7 @@ case "$SERVICE_TYPE" in
         echo "Starting Demo Start Service..."
         set_fixed_memory "128M" "128M"
         FINAL_JAVA_OPTS=$(build_base_java_opts)
+        FINAL_JAVA_OPTS="$FINAL_JAVA_OPTS -XX:+UseG1GC -XX:MaxMetaspaceSize=256M"
         LOG_CONFIG="${LOG_CONFIG:-log4j2-demo.xml}"
         MAIN_CLASS="${MAIN_CLASS:-com.dtstep.lighthouse.test.LDPFlowTestInstance}"
         LOG_FILE="${LOG_FILE:-/app/logs/lighthouse-demo/system_console.log}"
