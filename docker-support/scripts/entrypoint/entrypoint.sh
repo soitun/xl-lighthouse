@@ -33,6 +33,41 @@ echo "Config File: $CONFIG_FILE"
 echo "Timezone: $TZ"
 echo "Current Time: $(date)"
 
+scaleMemoryRate() {
+    local mem="$1"
+    local ratio="${2:-80}"
+    mem=$(echo "$mem" | tr -d '[:space:]' | tr '[:lower:]' '[:upper:]')
+    if [ -z "$mem" ]; then
+        return 0
+    fi
+    if [[ ! "$mem" =~ ^[0-9]+(\.[0-9]+)?[MG]?$ ]]; then
+        echo "ERROR: Invalid memory format: $mem" >&2
+        return 1
+    fi
+    local unit value
+    if [[ "$mem" =~ [MG]$ ]]; then
+        unit="${mem: -1}"
+        value="${mem%$unit}"
+    else
+        unit="M"
+        value="$mem"
+    fi
+    local mb
+    case "$unit" in
+        G)
+            mb=$(awk "BEGIN {printf \"%d\", $value * 1024}")
+            ;;
+        M)
+            mb=$(awk "BEGIN {printf \"%d\", $value}")
+            ;;
+    esac
+    local scaled_mb=$(( mb * ratio / 100 ))
+    if [ "$scaled_mb" -lt 1 ]; then
+        scaled_mb=1
+    fi
+    echo "${scaled_mb}M"
+}
+
 read_memory_config() {
     local service=$1
     local default_xmx=$2
@@ -56,6 +91,9 @@ read_memory_config() {
         XMS=$default_xms
         echo "Memory from defaults: -Xmx$XMX -Xms$XMS"
     fi
+    XMX=$(scaleMemoryRate "$XMX" 80) || exit 1
+    XMS=$(scaleMemoryRate "$XMS" 80) || exit 1
+    echo "Memory after scaling (80%): -Xmx$XMX -Xms$XMS"
 }
 
 set_fixed_memory() {
