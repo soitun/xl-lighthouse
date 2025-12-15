@@ -413,11 +413,6 @@ services:
     user: "1001:1001"
     environment:
       <<: *common-env
-    depends_on:
-      insights:
-        condition: service_healthy
-      standalone:
-        condition: service_healthy
     volumes:
       - ldp_data:/app/data
       - ./config/standalone-config.json:/app/runtime/config.json:ro
@@ -443,11 +438,8 @@ services:
     user: "1001:1001"
     environment:
       <<: *common-env
+      LDP_PARAM: 100
     depends_on:
-      insights:
-        condition: service_healthy
-      standalone:
-        condition: service_healthy
       demo_init:
         condition: service_completed_successfully
     volumes:
