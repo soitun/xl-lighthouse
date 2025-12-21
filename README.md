@@ -107,24 +107,6 @@ XL-LightHouse除了大数据版本外，同时支持单机版。单机模式成�
 - Gitee：[https://gitee.com/xl-xueling/xl-lighthouse](https://gitee.com/xl-xueling/xl-lighthouse)
 - 文档地址：[https://dtstep.com/](https://dtstep.com/)
 
-### 快速上手
-
-- [创建第一个数据指标](https://dtstep.com/docs/110029/)
-- [ICON点击数据统计](https://dtstep.com/docs/110030/)
-- [电商订单数据统计](https://dtstep.com/docs/110031/)
-- [订单支付状态数据统计](https://dtstep.com/docs/110032/)
-
-### XL-LightHouse介绍
-
--  [什么是通用型流式数据统计](https://dtstep.com/docs/110088/)
--  [与Flink和ClickHouse之类技术对比](https://dtstep.com/docs/110036/)
-
-### 版本记录
-
--  [安装包下载](https://dtstep.com/docs/110027/)
--  [开源版本（最新：v2.3.8）](https://dtstep.com/docs/110027/)
--  [商业版本（最新：v2.3.8-pro.1）](https://dtstep.com/docs/110072/)
-
 ### 日常运维
 
 -  [Docker两分钟快速部署](https://dtstep.com/docs/110150/)
@@ -133,22 +115,17 @@ XL-LightHouse除了大数据版本外，同时支持单机版。单机模式成�
 -  [数据备份](https://dtstep.com/docs/110049/)
 -  [日常运维](https://dtstep.com/docs/110047/)
 
-### 版权声明
+### 快速上手
 
-- 企业、机构内部使用或个人使用XL-LightHouse源程序不受任何限制，但不可删除程序中的Logo标识、版权声明等信息；
-- 销售基于XL-LightHouse源码或相关设计方案的软硬件产品及服务，需要向开发者缴纳一定比例的授权费用(0.2%~2%)；
+- [创建第一个数据指标](https://dtstep.com/docs/110029/)
+- [ICON点击数据统计](https://dtstep.com/docs/110030/)
+- [电商订单数据统计](https://dtstep.com/docs/110031/)
+- [订单支付状态数据统计](https://dtstep.com/docs/110032/)
 
-创作者权益受法律保护，为避免不必要的版权纠纷，在销售相关产品或服务前，请务必查阅：[版权声明](https://dtstep.com/docs/110073/)
-
-### 开发者承诺
-
-为保障XL-LightHouse项目更好的满足用户使用，开发者向所有使用者郑重承诺：
-
-+ 对较为严重可能造成数据泄露或数据丢失风险的漏洞都会第一时间修复；
-+ 影响基本功能使用的问题都会第一时间修复；
-+ 所有程序100%开源，开发者不会在程序中主观刻意添加任何形式的"后门"或"漏洞"，开发者绝不会窃取使用方业务数据以及试图通过控制使用方自身服务器资源的方式获取利益；
-+ 企业、机构内部使用或个人使用XL-LightHouse源程序、相关设计方案以及XL-Formula标准，无需授权并且永远不收取任何费用；
-+ 本项目长期维护，敬请放心使用；
+### XL-LightHouse介绍
+-  [通用型流式数据统计技术在大数据生态中的位置以及所要解决的问题](https://dtstep.com/docs/110152/)
+-  [什么是通用型流式数据统计](https://dtstep.com/docs/110088/)
+-  [与Flink和ClickHouse之类技术对比](https://dtstep.com/docs/110036/)
 
 ### 开源版本Web端部分功能预览
 
