@@ -150,11 +150,3 @@ XL-LightHouse除了大数据版本外，同时支持单机版。单机模式成�
 ![XL-LightHouse](https://lighthousedp-1300542249.cos.ap-nanjing.myqcloud.com/screenshot_v2/54.jpeg)
 ![XL-LightHouse](https://lighthousedp-1300542249.cos.ap-nanjing.myqcloud.com/screenshot_v2/52.jpeg)
 ![XL-LightHouse](https://lighthousedp-1300542249.cos.ap-nanjing.myqcloud.com/screenshot_v2/51.jpeg)
-
-### 联系作者
-
-如果您有任何问题、意见或建议，请添加以下微信。
-
-![XL-LightHouse](https://lighthousedp-1300542249.cos.ap-nanjing.myqcloud.com/contact/contact_20240627_084143.jpg)
-
-邮箱：better_xueling@126.com
