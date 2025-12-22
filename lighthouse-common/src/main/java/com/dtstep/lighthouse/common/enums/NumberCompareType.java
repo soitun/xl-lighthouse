@@ -17,6 +17,8 @@ public enum NumberCompareType {
 
     EQ(5),
 
+    NE(6),
+
     ;
 
     @JsonValue
