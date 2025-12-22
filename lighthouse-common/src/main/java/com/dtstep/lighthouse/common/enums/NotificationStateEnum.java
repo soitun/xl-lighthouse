@@ -15,6 +15,8 @@ public enum NotificationStateEnum {
 
     Failed(4),
 
+    NotSent(5),
+
     ;
 
     NotificationStateEnum(int state){
